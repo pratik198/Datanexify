@@ -27,11 +27,25 @@ function App() {
   }
 
 
+  // async function googleSignIn() {
+  //   const { error } = await supabase.auth.signInWithOAuth({
+  //     provider: "google",
+  //     options: {
+  //       scopes: "https://www.googleapis.com/auth/calendar",
+  //     },
+  //   });
+
+  //   if (error) {
+  //     console.error("Error during Google Sign-In:", error.message);
+  //     alert("Failed to log in. Please try again.");
+  //   }
+  // }
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
         scopes: "https://www.googleapis.com/auth/calendar",
+        redirectTo: "https://datanexify-iwis.vercel.app/auth/callback", // Ensure this matches your Google Console redirect URI
       },
     });
 
